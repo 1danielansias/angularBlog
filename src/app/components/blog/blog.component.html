@@ -1,0 +1,53 @@
+<div class="contenedor-blog wrapper">
+  <!-- "Formulario" -->
+  <section class="formulario-noticias">
+    <h2>Publicar una noticia</h2>
+
+    <label for="titulo">Título</label>
+    <input
+      id="titulo"
+      type="text"
+      placeholder="Título"
+      [(ngModel)]="nuevaNoticia.titulo"
+    />
+
+    <label for="img">Imagen (URL)</label>
+    <input
+      id="img"
+      type="text"
+      placeholder="Imagen (URL)"
+      [(ngModel)]="nuevaNoticia.img"
+    />
+
+    <label for="contenido">Contenido</label>
+    <textarea
+      id="contenido"
+      placeholder="Contenido"
+      [(ngModel)]="nuevaNoticia.contenido"
+    ></textarea>
+
+    <label for="fechaPublicacion">Fecha de Publicación</label>
+    <input
+      id="fechaPublicacion"
+      type="date"
+      [(ngModel)]="nuevaNoticia.fechaPublicacion"
+    />
+
+    <button (click)="addNoticia()">Publicar</button>
+  </section>
+
+  <!-- Listado de noticias -->
+  <section class="lista-noticias">
+    <h2>Noticias</h2>
+    @for (noticia of arrayNoticias; track $index) {
+    <article class="item-noticia">
+      <img [src]="noticia.img" [alt]="noticia.titulo" />
+      <div class="noticia-contenido">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.contenido }}</p>
+        <p class="fecha">📅 Publicado el: {{ noticia.fechaPublicacion }}</p>
+      </div>
+    </article>
+    }
+  </section>
+</div>
